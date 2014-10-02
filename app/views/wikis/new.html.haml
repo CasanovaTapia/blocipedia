@@ -1,0 +1,15 @@
+%h1 New Wiki
+
+= form_for @wiki do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :body
+    = f.text_area :body, rows: 10, class: 'form-control'
+  .form-group
+    = f.label :public, class: 'checkbox' do
+      = f.check_box :public
+      Public wiki
+  .form-group
+    = f.submit "Save", class: 'btn btn-success'
