@@ -1,6 +1,6 @@
 class CollaborationsController < ApplicationController
   def create
-    @wiki = Wiki.find(params[:wiki_id])
+    @wiki = Wiki.friendly.find(params[:wiki_id])
     @user = User.find(params[:user_id])
 
     if @wiki.users << @user
@@ -13,7 +13,7 @@ class CollaborationsController < ApplicationController
   end
 
   def new
-    @wiki = Wiki.find(params[:wiki_id])
+    @wiki = Wiki.friendly.find(params[:wiki_id])
     @collaboration = Collaboration.new
   end
 end
