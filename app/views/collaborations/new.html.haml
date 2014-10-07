@@ -3,6 +3,6 @@
 = form_for [@wiki, @collaboration] do |f|
   .form-group
     = f.label :user
-    = f.select :user, options_for_select(User.all{ |u| [u.username, u.id] })
+    = f.select :user_id, options_from_collection_for_select(User.all, "id", "username")
   .form-group
     = f.submit "Add Collaborator", class: 'btn btn-success'

@@ -1,7 +1,7 @@
 class CollaborationsController < ApplicationController
   def create
     @wiki = Wiki.friendly.find(params[:wiki_id])
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:collaboration][:user_id])
 
     if @wiki.users << @user
       flash[:notice] = "Collaborator was added to this wiki."
