@@ -15,5 +15,6 @@ class CollaborationsController < ApplicationController
   def new
     @wiki = Wiki.friendly.find(params[:wiki_id])
     @collaboration = Collaboration.new
+    authorize @collaboration
   end
 end

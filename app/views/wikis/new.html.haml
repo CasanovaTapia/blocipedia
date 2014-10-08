@@ -7,9 +7,10 @@
   .form-group
     = f.label :body
     = f.text_area :body, rows: 10, class: 'form-control'
-  .form-group
-    = f.label :public, class: 'checkbox' do
-      = f.check_box :public
-      Public wiki
+  = if policy @wiki
+    .form-group
+      = f.label :private, class: 'checkbox' do
+        = f.check_box :private, value: true
+        Private wiki
   .form-group
     = f.submit "Save", class: 'btn btn-success'
