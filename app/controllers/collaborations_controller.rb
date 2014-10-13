@@ -5,16 +5,16 @@ class CollaborationsController < ApplicationController
 
     if @wiki.users << @user
       flash[:notice] = "Collaborator was added to this wiki."
-      redirect_to @wiki 
+      redirect_to @wiki
     else
       flash[:error] = "Collaborator was not added. Please try again."
       render :show
-    end    
+    end
   end
 
   def new
     @wiki = Wiki.friendly.find(params[:wiki_id])
     @collaboration = Collaboration.new
-    authorize @collaboration
+    # authorize @collaboration
   end
 end
