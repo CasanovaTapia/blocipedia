@@ -5,7 +5,7 @@ class WikiPolicy < ApplicationPolicy
 
   # def show?
   #   if record.private?
-  #     record.user.role == "premium"
+  #     record.user.role == 'premium'
   #   end
   # end
 
