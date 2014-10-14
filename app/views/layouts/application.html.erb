@@ -20,8 +20,9 @@
             <% if current_user %>
               Hello <%= current_user.email %>!
               <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-            <% elsif current_user && current_user.role != 'premium' %>
-              <%= link_to "Upgrade account", new_charge_path %>
+              <% unless current_user.role?("premium") %>
+                <%= link_to "Upgrade account", new_charge_path %>
+              <% end %>
             <% else %>
               <%= link_to "Sign in", new_user_session_path %> or
               <%= link_to "Sign up", new_user_registration_path %>
@@ -30,7 +31,7 @@
 
         </div>
       </div>
-   
+
       <% if flash[:notice] %>
         <div class="alert alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -47,7 +48,7 @@
           <%= flash[:alert] %>
         </div>
       <% end %>
-    
+
       <%= yield %>
 
     </div>
