@@ -6,6 +6,7 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.friendly.find(params[:id])
+    @collaboration = @wiki.collaborations.new
     authorize @wiki
   end
 
@@ -45,7 +46,7 @@ class WikisController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy
     @wiki = Wiki.friendly.find(params[:id])
 
     authorize @wiki

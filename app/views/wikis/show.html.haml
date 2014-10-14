@@ -1,9 +1,16 @@
 %h1= markdown @wiki.title
-%p= @wiki.users
+Created by #{@wiki.user.username}
+- if @wiki.users.present?
+  %p
+    Other contributors:
+    - @wiki.users.each do |user|
+      = user.username
 
 .row
   .col-md-8
     %p= markdown @wiki.body
   .col-md-4
-    = link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete this wiki?" }
-    = link_to "Add Collaborator", new_wiki_collaboration_path(@wiki), class: 'btn btn-success'
+    - if policy(@wiki).destroy?
+      = link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete this wiki?" }
+    - if policy(Collaboration.new).create?
+      = link_to "Add Collaborator", new_wiki_collaboration_path(@wiki), class: 'btn btn-success'

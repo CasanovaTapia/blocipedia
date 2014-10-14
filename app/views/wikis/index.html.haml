@@ -6,9 +6,5 @@
       .media-heading
         %h4= link_to wiki.title, wiki
   .col-md-4
-    = link_to "New Wiki", new_wiki_path, class: 'btn btn-success'
-
-
-
-
-  
+    - if policy(Wiki.new).create?
+      = link_to "New Wiki", new_wiki_path, class: 'btn btn-success'

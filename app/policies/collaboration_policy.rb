@@ -1,6 +1,10 @@
-class CollaborationsPolicy < ApplicationPolicy
+class CollaborationPolicy < ApplicationPolicy
   def create?
-    (record.user == user) && user.role?(:premium)
+    user.present? && (record.user == user) && user.role?(:premium)
+  end
+
+  def new?
+    create?
   end
 
   class Scope < Scope
