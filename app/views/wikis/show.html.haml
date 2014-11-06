@@ -1,5 +1,5 @@
 %h1= markdown @wiki.title
-Created by #{@wiki.user.username}
+%p= "Created by #{@wiki.user.username}"
 - if @wiki.users.present?
   %p
     Other contributors:
